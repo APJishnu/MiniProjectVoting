@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Control Panel</title>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>ADMIN PANEL</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +35,7 @@
         font-family: 'Roboto Condensed', sans-serif;
       }
     </style>
+
   </head>
   <body>
     
@@ -47,18 +49,21 @@
           <span class="icon-bar"></span>
         </button>
         <div class="navbar-header">
-          <a href="cpanel.php" class="navbar-brand headerFont text-lg"><strong>VotingSystem</strong></a>
+          <a href="cpanel.php" class="navbar-brand headerFont text-lg">Simple Voting System</a>
         </div>
 
         <div class="collapse navbar-collapse" id="example-nav-collapse">
           <ul class="nav navbar-nav">
             
-             <li><a href="nomination.html"><span class="subFont"><strong>Candidates List</strong></span></a></li>
-            <li><a href="changePassword.php"><span class="subFont"><strong>Admin's Password</strong></span></a></li>
+             <li><a href="nomination.html"><span class="subFont"><strong>Nominations</strong></span></a></li>
+            <li><a href="changePassword.php"><span class="subFont"><strong>Change Password</strong></span></a></li>
+            <li><a href="users.php"><span class="subFont"><strong>Voters</strong></span></a></li> 
+            <li><a href="feedbackReport.php"><span class="subFont"><strong>Feedback Report</strong></span></a></li> 
+          
           </ul>
           
           
-          <span class="normalFont"><a href="index.html" class="btn btn-success navbar-right navbar-btn"><strong>Sign Out</strong></a></span></button>
+          <span class="normalFont"><a href="index.html" class="btn btn-danger navbar-right navbar-btn" style="border-radius:0%">Logout</a></span></button>
         </div>
 
       </div> <!-- end of container -->
@@ -66,11 +71,11 @@
 
     <div class="container" style="padding:100px;">
       <div class="row">
-        <div class="col-sm-12" style="border:2px solid gray;">
+        <div class="col-sm-12" style="border:2px outset gray;">
           
-          <div class="page-header">
-            <h2 class="specialHead">CONTROL PANEL</h2><br>
-            <p class="normalFont">Vote Counts</p>
+          <div class="page-header text-center">
+            <h2 class="specialHead">ADMIN PANEL</h2>
+            <p class="normalFont">Displaying all voting results</p>
           </div>
           
           <div class="col-sm-12">
@@ -81,6 +86,7 @@
               $JIT=0;
               $ANJ=0;
               $ARC=0;
+              
 
               $conn = mysqli_connect($hostname, $username, $password, $database);
               if(!$conn)
@@ -90,7 +96,7 @@
               else
               {
 
-                //BJP
+                //JULIET
                 $sql ="SELECT * FROM tbl_users WHERE voted_for='BHA'";
                 $result= mysqli_query($conn, $sql);
 
@@ -102,21 +108,19 @@
                       $BHA++;
                   }
 
-                  
+                  $bha_value= $BHA*2;
 
-                  $bha_value= $BHA*5;
-
-                  echo "<strong>Bharath</strong><br>";
+                  echo "<strong>BHARATH</strong><br>";
                   echo "
                   <div class='progress'>
-                    <div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow=\"$bha_value\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$bha_value."%'>
-                      <span class='sr-only'>BHA</span>
+                    <div class='progress-bar progress-bar-danger' role='progressbar' aria-valuenow=\"$bha_value\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$bha_value."%'>
+                      <span class='sr-only'>JM</span>
                     </div>
                   </div>
                   ";
                 }
 
-                // CONGRESS
+                // ROZANNE
                 $sql ="SELECT * FROM tbl_users WHERE voted_for='JIT'";
                 $result= mysqli_query($conn, $sql);
 
@@ -129,19 +133,19 @@
                   }
 
 
-                  $jit_value= $JIT*5;
+                  $jit_value= $JIT*2;
 
-                  echo "<strong>Jithya</strong><br>";
+                  echo "<strong>JITHYA</strong><br>";
                   echo "
                   <div class='progress'>
-                    <div class='progress-bar progress-bar-primary' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$jit_value."%'>
-                      <span class='sr-only'>JIT</span>
+                    <div class='progress-bar progress-bar-info' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$jit_value."%'>
+                      <span class='sr-only'>JRZ</span>
                     </div>
                   </div>
                   ";
                 }
 
-                // AAP
+                // JOHN WALKER
                 $sql ="SELECT * FROM tbl_users WHERE voted_for='ANJ'";
                 $result= mysqli_query($conn, $sql);
 
@@ -154,20 +158,19 @@
                   }
 
 
-                  $anj_value= $ANJ*5;
+                  $anj_value= $ANJ*2;
 
-                  echo "<strong>Anjali</strong><br>";
+                  echo "<strong>ANJALI</strong><br>";
                   echo "
                   <div class='progress'>
-                    <div class='progress-bar progress-bar-info' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$anj_value."%'>
-                      <span class='sr-only'>ANJ</span>
+                    <div class='progress-bar progress-bar-warning' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$anj_value."%'>
+                      <span class='sr-only'>JM</span>
                     </div>
                   </div>
                   ";
                 }
 
-                // TMC
-                
+                // MIA
                 $sql ="SELECT * FROM tbl_users WHERE voted_for='ARC'";
                 $result= mysqli_query($conn, $sql);
 
@@ -180,17 +183,19 @@
                   }
 
 
-                  $arc_value= $ARC*5;
+                  $arc_value= $ARC*2;
 
-                  echo "<strong>Archana</strong><br>";
+                  echo "<strong>ARCHANA</strong><br>";
                   echo "
                   <div class='progress'>
-                    <div class='progress-bar progress-bar-warning' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$arc_value."%'>
-                      <span class='sr-only'>ARC</span>
+                    <div class='progress-bar progress-bar-success' role='progressbar' aria-valuenow=\"70\" aria-valuemin=\"0\" aria-valuemax=\"100\" style='width: ".$arc_value."%'>
+                      <span class='sr-only'>MAD</span>
                     </div>
                   </div>
                   ";
                 }
+
+               
 
                echo "<hr>";
 
@@ -211,16 +216,14 @@
 
                   $tptal= $total*10;
 
-                  echo "<strong>Total Number of Votes</strong><br>";
+                  
                   echo "
-                  <div class='text-primary'>
-                    <h3 class='normalFont'>VOTES : $total </h3>
+                  <div class='text-primary tet-center'>
+                    <h3 class='normalFont'>TOTAL VOTES : $total </h3>
                   </div>
                   ";
                 }
-                
 
-                
               }
             ?>
           </div>

@@ -58,7 +58,7 @@
           <span class="icon-bar"></span>
         </button>
         <div class="navbar-header">
-          <a href="index.html" class="navbar-brand headerFont text-lg"><strong>MATDAAN</strong></a>
+          <a href="index.html" class="navbar-brand headerFont text-lg"><strong>Users voting</strong></a>
         </div>
 
         <div class="collapse navbar-collapse" id="example-nav-collapse">
@@ -101,7 +101,7 @@
               die("Connection Failed : " . mysqli_connect_error());
             }
 
-            for ($i = 1; $i < 16; $i++) {
+            for ($i = 1; $i < 100; $i++) {
 
               $sql = "SELECT * FROM projectdb.tbl_users where id='" . $i . "'";
               $query = mysqli_query($conn, $sql);
